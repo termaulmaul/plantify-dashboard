@@ -3,13 +3,12 @@ async function updateStatus() {
       // Memanggil API untuk mendapatkan status tanah
       const response = await fetch('https://termaulmaul.github.io/plantify-dashboard/api/soil/status');
       
-      // Periksa apakah respon API berhasil
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      
-      const soilData = await response.json(); // Parse JSON dari respons API
-      
+  
+      const soilData = await response.json();
+  
       const statusElement = document.getElementById("status");
   
       // Perbarui status berdasarkan data API
@@ -25,7 +24,6 @@ async function updateStatus() {
       }
     } catch (error) {
       console.error('Error fetching soil status:', error);
-  
       const statusElement = document.getElementById("status");
       statusElement.textContent = "Gagal mengambil data";
       statusElement.className = "";
